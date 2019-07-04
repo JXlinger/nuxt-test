@@ -3,8 +3,19 @@
 		<ul>
 			<li v-for="item in bannerlist" :key="item.name">
 				<img :src="'https://img.xhmwxy.com/' + item.image" />
+        {{ item.name }}
 			</li>
 		</ul>
+    <nuxt-link to="/home">home</nuxt-link>
+    <div class="donghua_wrap">
+      <div class="box">
+        <div class="donghua">
+        </div>
+        <div class="wrap">call</div>
+      </div>
+
+    </div>
+
   </div>
 </template>
 
@@ -15,7 +26,7 @@ export default {
   components: {
     Logo
   },
-	asyncData(){
+	async asyncData(){
 		return axios.get('https://api.meiweixueyuan.cn/pc/banners',{
 			headers:{
 				Accept: 'application/prs.meiweixueyuan.v1+json'
@@ -25,7 +36,7 @@ export default {
 			return {
 				bannerlist: res.data.data
 			}
-			
+
 		})
 		.catch( error => {
 			console.warn(error)
@@ -42,14 +53,4 @@ export default {
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-
 </style>
